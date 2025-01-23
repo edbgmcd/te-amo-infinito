@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Declaración de Amor</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    }
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 400px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      color: #ff6f61;
+    }
+    .message {
+      font-size: 1.4rem;
+      margin: 20px 0;
+      color: #333;
+      display: none;
+    }
+    button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:first-child {
+      background-color: #ff6f61;
+      color: white;
+    }
+    button:last-child {
+      background-color: #6fa8dc;
+      color: white;
+    }
+    button:hover {
+      opacity: 0.8;
+    }
+    .final-message {
+      font-size: 1.6rem;
+      margin-top: 20px;
+      color: #ff6f61;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Haz clic para descubrir algo especial</h1>
+    <div id="step-1" class="message">Hola 😊, hay algo que quiero decirte...</div>
+    <div id="step-2" class="message">Desde hace tiempo, no puedo dejar de pensarte 🥰.</div>
+    <div id="step-3" class="message">Creo que eres increíble, y me haces feliz 💕.</div>
+    <div id="step-4" class="final-message">¡Te amo! ❤️ ¿Quieres ser mi pareja? 🥹</div>
+    <button onclick="nextStep()">Siguiente</button>
+    <button onclick="resetSteps()">Reiniciar</button>
+  </div>
+
+  <script>
+    let currentStep = 0;
+
+    function nextStep() {
+      currentStep++;
+      const messages = document.querySelectorAll('.message');
+      const finalMessage = document.getElementById('step-4');
+
+      messages.forEach((message, index) => {
+        message.style.display = index === currentStep - 1 ? 'block' : 'none';
+      });
+
+      if (currentStep === 4) {
+        finalMessage.style.display = 'block';
+      }
+    }
+
+    function resetSteps() {
+      currentStep = 0;
+      const messages = document.querySelectorAll('.message');
+      const finalMessage = document.getElementById('step-4');
+
+      messages.forEach(message => (message.style.display = 'none'));
+      finalMessage.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
